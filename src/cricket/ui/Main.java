@@ -1,7 +1,6 @@
 package src.cricket.ui;
 import src.cricket.models.Team;
 import src.cricket.service.MatchController;
-
 import java.util.Scanner;
 
 public class Main {
@@ -21,7 +20,6 @@ public class Main {
 
         System.out.println("ENTER TEAM-B NAME?");
                 Team teamB=new Team(sc.nextLine());
-            MatchController controller=new MatchController(teamA,teamB,overs);
 
 
 
@@ -38,6 +36,7 @@ public class Main {
         System.out.println();
         System.out.println();
 
+       // System.out.println(teamA);
 
         switch(opt){
 
@@ -77,28 +76,25 @@ public class Main {
 
                break;
 
+
         
         
             
         }
+        MatchController controller=new MatchController(teamA,teamB,overs);
+
+        System.out.println();
+        System.out.println("START MATCH");
+        controller.createMatch();
 
          while(!controller.isInningsOver()){
             System.out.println("ENTER BALL RESULT");
             controller.recordBall(sc.next());
-            controller.getCurrentScore();
+            
                        
          }
          controller.InningsScoreCard();
         //sc.close();
-    }
-
-    public static void scoreInput(){
-
-         Scanner sc=new Scanner(System.in);
-
-         System.out.println("START MATCH");
-
-        
     }
     public static void main(String[] args) {
 

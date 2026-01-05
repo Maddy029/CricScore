@@ -1,7 +1,8 @@
 package src.cricket.service;
 import src.cricket.models.*;
 public class MatchController {
-    String match;
+    Match match;
+    Innings currentInnings;
     Team teamA;
     Team teamB;
     int maxOvers;
@@ -9,9 +10,10 @@ public class MatchController {
     int runs=0;
     int wickets=0;
     int balls;
-
-
-//striker/non-striker
+    Player striker;
+    Player nonStriker;
+    int nextBatsman=2;
+    
 
 
 
@@ -19,71 +21,31 @@ public class MatchController {
         this.teamA=teamA;
         this.teamB=teamB;
         this.maxOvers=overs;
+
+
+        striker =teamA.getPlayers().get(0);
+     nonStriker=teamA.getPlayers().get(1);
+
         
     }
     public void createMatch(){
 
-    }
+        match=new Match(teamA,teamB,maxOvers);
+        currentInnings=match.firstinnings();
+        // second inn?
+        }
+
+
 
     public void recordBall(String action){
 
+        currentInnings.recordBall(action);
 
+        if(currentInnings.isInningsOver()){
+        currentInnings=match.switchInnings();}
         
-        if(action.equals("0")){
-            balls++;
 
-        }
-        else if(action.equals("1")){
-            this.runs=this.runs+1;
-            balls++;
 
-        }
-        else if(action.equals("2")){
-            runs=runs+2;
-            balls++;
-        }
-        else if(action.equals("3")){
-            runs=runs+3;
-            balls++;
-        }
-        else if(action.equals("4")){
-            runs=runs+4;
-            balls++;
-        }
-        else if(action.equals("6")){
-            runs=runs+6;
-            balls++;
-        }
-        else if(action.equals("w")){
-            wickets++;
-            balls++;
-        }
-
-         else if(action.equals("wd")){
-            runs++;
-        }
-
-        if(balls==6){
-            currentOver++;
-            balls=0;
-        }
-        
-    }
-
-    public void getCurrentScore(){
-
-        System.out.println(+this.runs+"/"+this.wickets);
-        System.out.println(+currentOver+"."+balls);
-    }
-
-    public boolean isInningsOver(){
-        if(currentOver==maxOvers){
-            return true;
-        }
-        else if(wickets==10){
-            return true;
-        }
-        return false;
     }
 
 
@@ -96,5 +58,15 @@ public class MatchController {
 
     //     this.maxOvers=n;
     // }
+
+     public boolean isInningsOver(){
+        if(currentInnings.getCurrentOver()==maxOvers){
+            return true;
+        }
+        else if(currentInnings.getWickets()==10){
+            return true;
+        }
+        return false;
+    }
 
 }

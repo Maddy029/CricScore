@@ -8,7 +8,7 @@ public class Team {
     // DATA
     String teamName;
      int playersCount;
-    ArrayList<String> playerList=new ArrayList<>();
+    ArrayList<Player> playerList=new ArrayList<>();
 
     // MEMBERS
 
@@ -16,8 +16,9 @@ public class Team {
         this.teamName=name.toUpperCase();
     }
 
-    public void getTeamName(){
-        System.out.println("The Team Name Is "+this.teamName);
+    public String getTeamName(){
+        //System.out.println("The Team Name Is "+this.teamName);
+        return this.teamName;
     }
 
     public void playersCount(int n){
@@ -30,18 +31,17 @@ public class Team {
 
          for(int i=1;i<this.playersCount+1;i++){
             System.out.println("ENTER PLAYER "+i+"NAME :");
-            String Name=sc.nextLine().toUpperCase();
-              playerList.add(Name); 
+            String name=sc.nextLine().toUpperCase();
+            Player player=new Player(name);
+              playerList.add(player); 
                 }
     }
 
 
-    public void getPlayers(){
+    public ArrayList<Player> getPlayers(){
         System.out.println();
         System.out.println("PLAYERS IN "+this.teamName);
-        for(int i=0;i<playerList.size();i++){
-            System.out.println("PLAYER "+(i+1)+": "+playerList.get(i));
-        }
+        return this.playerList;
     }
 
 }

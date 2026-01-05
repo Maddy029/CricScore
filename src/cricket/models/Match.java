@@ -2,20 +2,40 @@ package src.cricket.models;
 
 public class Match {
 
-    String teamA;
-    String teamB;
-    String firstInnings;
-    String secondInnings;
-    String currentInnings;
+    Team teamA;
+    Team teamB;
+    Innings firstInningsbatting;
+    Innings secondInningsbatting;
+    int target=0;
+    Innings currentInnings;
+    int overs;
 
 
-    public void startMatch(){
-        //write here
+    public Match(Team teamA,Team teamB, int overs){
+
+        this.teamA=teamA;
+        this.teamB=teamB;
+        this.overs=overs;
     }
 
+    public void startMatch(){
+        //firstInningsbatting=new Innings(teamA,overs,target);
+        //secondInningsbatting=new Innings(teamB,overs);
+    }
 
-    public void switchInnings(){
+    public  Innings firstinnings(){
+
+        firstInningsbatting=new Innings(teamA,overs);
+        return firstInningsbatting;
+        
+
+    }
+
+    public Innings switchInnings(){
+
+        secondInningsbatting=new Innings(teamB,overs,target);
         //write here
+        return secondInningsbatting;
 
     }
 
