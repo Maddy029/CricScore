@@ -6,7 +6,6 @@ public class Match {
     Team teamB;
     Innings firstInningsbatting;
     Innings secondInningsbatting;
-    int target=0;
     Innings currentInnings;
     int overs;
 
@@ -30,10 +29,12 @@ public class Match {
         
 
     }
+    
+
 
     public Innings switchInnings(){
 
-        secondInningsbatting=new Innings(teamB,overs,target);
+        secondInningsbatting=new Innings(teamB,overs,firstInningsbatting.getRuns()+1);
         //write here
         return secondInningsbatting;
 
@@ -42,6 +43,16 @@ public class Match {
 
     public void getwinner(){
         //write here
+
+        
+
+        if(secondInningsbatting.getRuns()>=firstInningsbatting.getRuns()+1){
+            System.out.println(teamB.getTeamName()+" WON");
+        }
+        else{
+            System.out.println(teamA.getTeamName()+" WON");
+
+        }
 
     }
 

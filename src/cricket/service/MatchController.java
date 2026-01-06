@@ -13,6 +13,7 @@ public class MatchController {
     Player striker;
     Player nonStriker;
     int nextBatsman=2;
+    int inningsnumber=1;
     
 
 
@@ -32,7 +33,7 @@ public class MatchController {
 
         match=new Match(teamA,teamB,maxOvers);
         currentInnings=match.firstinnings();
-        // second inn?
+        
         }
 
 
@@ -41,8 +42,9 @@ public class MatchController {
 
         currentInnings.recordBall(action);
 
-        if(currentInnings.isInningsOver()){
+        if(currentInnings.isInningsOver()&& inningsnumber++==1){
         currentInnings=match.switchInnings();}
+        
         
 
 
@@ -50,23 +52,20 @@ public class MatchController {
 
 
     public void InningsScoreCard(){
-          System.out.println("Innings complete!");
-                System.out.println("Final score: "+this.runs+"/"+this.wickets+" in "+maxOvers+".0 overs");
+
+        currentInnings.InningsScoreCard();
     }
 
-    // public void getmaxOvers(int n){
 
-    //     this.maxOvers=n;
-    // }
 
      public boolean isInningsOver(){
-        if(currentInnings.getCurrentOver()==maxOvers){
-            return true;
-        }
-        else if(currentInnings.getWickets()==10){
-            return true;
-        }
-        return false;
+
+
+        return currentInnings.isInningsOver();
+
+    }
+    public void getWinner(){
+        match.getwinner();
     }
 
 }

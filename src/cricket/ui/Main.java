@@ -62,17 +62,21 @@ public class Main {
                 
                System.out.println("ENTER NUMBER OF PLAYERS IN YOUR TEAM-B (MAX 11 PAYERS) ");
                 teamB.playersCount(sc.nextInt());
-
-               teamB.addPlayers();
+                 teamB.addPlayers();
                teamB.getPlayers();
+
+            //    teamB.addPlayers();
+            //    teamB.getPlayers();
                System.out.println();
 
                 System.out.println("ENTER NUMBER OF PLAYERS IN YOUR TEAM-A (MAX 11 PAYERS) ");
                 teamA.playersCount(sc.nextInt());
-
-
-               teamA.addPlayers();
+                teamA.addPlayers();
                teamA.getPlayers();
+
+
+            //    teamA.addPlayers();
+            //    teamA.getPlayers();
 
                break;
 
@@ -94,6 +98,7 @@ public class Main {
                        
          }
          controller.InningsScoreCard();
+         controller.getWinner();
         //sc.close();
     }
     public static void main(String[] args) {

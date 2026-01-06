@@ -14,7 +14,8 @@ public class Innings {
     Player striker;
     Player nonStriker;
     int nextBatsman=2;
-    int target;
+    Match match;
+    int target=-1;
    
    //methods
 
@@ -31,6 +32,7 @@ public class Innings {
     this.teamA=battingTeam;
     this.maxOvers=maxOvers;
     this.target=target;
+    System.out.println("target : "+target);
 
      striker =teamA.getPlayers().get(0);
      nonStriker=teamA.getPlayers().get(1);
@@ -138,6 +140,9 @@ public class Innings {
         else if(wickets==10){
             return true;
         }
+        else if( target!=-1 && target<=runs){
+            return true;
+        }
         return false;
     }
 
@@ -153,6 +158,9 @@ public class Innings {
 
     public int getWickets(){
         return wickets;
+    }
+    public int getRuns(){
+        return runs;
     }
 
 
